@@ -1,0 +1,203 @@
+.hero-btn {
+    transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.95;
+}
+
+.floating-card {
+    width: 190px;
+    height: 190px;
+    bottom: -30px;
+    left: -35px;
+    transition: 0.3s ease;
+}
+
+.floating-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-number {
+    font-size: 4rem;
+}
+
+.how-title {
+    font-size: 3rem;
+}
+
+.how-card {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 40px;
+    min-height: 280px;
+    overflow: hidden;
+    border: 1px solid #ece7df;
+    transition: 0.3s ease;
+}
+
+.how-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-number {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 7rem;
+    font-weight: 700;
+    color: #f6ddd5;
+}
+
+.icon-box {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    background: #d8efd2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4rem;
+
+    margin-bottom: 30px;
+}
+
+.owner-section {
+    background: linear-gradient(90deg,
+            #123524,
+            #0d3a22);
+
+    border-radius: 45px;
+    padding: 40px;
+}
+
+.owner-title {
+    font-size: 3rem;
+}
+
+.owner-btn {
+    background: #ff6b35;
+    transition: 0.3s ease;
+}
+
+.owner-btn:hover {
+    background: #ff5a1f;
+    transform: translateY(-3px);
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.06);
+
+    border-radius: 25px;
+
+    padding: 15px;
+
+    min-height: 100px;
+
+    transition: 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+.info-number {
+    color: #ff6b35;
+    font-size: 2.1rem;
+    font-weight: 700;
+}
+
+@media(max-width:992px) {
+
+    .owner-section {
+        padding: 50px 35px;
+    }
+
+    .owner-title {
+        font-size: 2.4rem;
+    }
+
+}
+
+@media(max-width:576px) {
+
+    .owner-section {
+        border-radius: 30px;
+        padding: 40px 25px;
+    }
+
+    .owner-title {
+        font-size: 2.7rem;
+    }
+
+    .info-box {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .info-number {
+        font-size: 2.1rem;
+    }
+
+}
+
+@media(max-width:992px) {
+
+    .how-title {
+        font-size: 4rem;
+    }
+
+}
+
+@media(max-width:576px) {
+
+    .how-title {
+        font-size: 2.8rem;
+    }
+
+    .how-card {
+        min-height: auto;
+        padding: 40px 25px;
+    }
+
+    .step-number {
+        font-size: 5rem;
+    }
+
+}
+
+@media(max-width:992px) {
+    .stats-number {
+        font-size: 3rem;
+    }
+}
+
+@media(max-width:576px) {
+    .stats-number {
+        font-size: 2rem;
+    }
+}
+
+@media(max-width:992px) {
+
+    .floating-card {
+        width: 180px;
+        height: 180px;
+        bottom: -20px;
+        left: 10px;
+    }
+
+}
+
+@media(max-width:576px) {
+
+    .floating-card {
+        width: 140px;
+        height: 140px;
+        bottom: -10px;
+        left: 10px;
+    }
+
+}
