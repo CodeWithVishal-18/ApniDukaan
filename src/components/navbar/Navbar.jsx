@@ -4,17 +4,11 @@ import { Link } from 'react-router-dom';
 let Navbar = memo(() => {
     return (
         <nav className="navbar navbar-expand-lg bg-white border-bottom py-1">
-            <div className="container">
+            <div className="container-fluid">
                 <a href="/" className="navbar-brand fw-bold fs-2 text-success">
                     <img src="/logo/apnidukaanlogo.png" alt="logo of apni dukaan with orange and green color" className='logo-img' />
                 </a>
-                <button
-                    className="navbar-toggler"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navMenu"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+                <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu" > <span className="navbar-toggler-icon"></span> </button>
 
                 <div className="collapse navbar-collapse" id="navMenu">
 
