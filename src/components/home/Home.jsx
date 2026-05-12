@@ -177,7 +177,7 @@ let Home = memo(() => {
                             <div className="row g-4">
                                 <div className="col-6">
                                     <div className="info-box">
-                                        <h3 className="info-number">₹0</h3>
+                                        <h3 className="info-number">₹ 0</h3>
                                         <p className="mb-0 text-light">Setup fee</p>
                                     </div>
 
