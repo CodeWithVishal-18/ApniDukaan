@@ -162,7 +162,7 @@ let Home = memo(() => {
                             <p className="mb-4" style={{ color: "#b8c1b8", fontSize: "1.3rem", lineHeight: "1.8", maxWidth: "700px" }} >
                                 Zero commission for the first 6 months.
                                 Free onboarding visit. We handle the tech,
-                                you handle the trust.
+                                you handle the trust..
                             </p>
                             <div className="d-flex flex-wrap gap-3">
 
