@@ -20,6 +20,11 @@ let Navbar = memo(() => {
                         <li className="nav-item">
                             <Link to={"vendor"} className="nav-link">Become a Partner</Link>
                         </li>
+
+                        <li className="nav-item">
+                            <Link to={"vendor"} className="nav-link">Shops</Link>
+                        </li>
+
                     </ul>
 
                     <div className="d-flex gap-3 mt-3 mt-lg-0">
