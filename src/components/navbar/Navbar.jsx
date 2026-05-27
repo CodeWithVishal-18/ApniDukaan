@@ -22,7 +22,7 @@ let Navbar = memo(() => {
                         </li>
 
                         <li className="nav-item">
-                            <Link to={"vendor"} className="nav-link">Shops</Link>
+                            <Link to={"shops"} className="nav-link">Shops</Link>
                         </li>
 
                     </ul>

@@ -7,13 +7,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './components/App.jsx';
 import Home from './components/home/Home.jsx';
 import VendorHome from './components/vendor/VendorHome.jsx';
+import ShopHome from './components/shops/ShopHome.jsx';
 
 let projectRoutes = createBrowserRouter([{
   path: "/",
   element: <App />,
   children: [
     { element: <Home />, index: true },
-    {path:"vendor",element:<VendorHome/>}
+    {path:"vendor",element:<VendorHome/>},
+    {path:"shops",element:<ShopHome/>}
   ]
 }])
 
