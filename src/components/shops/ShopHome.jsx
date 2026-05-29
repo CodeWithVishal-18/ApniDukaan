@@ -68,7 +68,6 @@ export default function ShopHome() {
         }
     }
 
-
     return (
         <div className="shop-home">
             <div className="container py-5">
@@ -84,7 +83,7 @@ export default function ShopHome() {
                         return (
                             <div className="col-12" key={index}>
                                 <div className="shop-card" style={{ background: style.cardBg, borderColor: style.cardBorder }}>
-                                    <div className="shop-image-wrapper">
+                                    <div className="shop-image-wrapper my-auto">
                                         <img src={`http://localhost:8080/images/${shop.imageName}`} alt={shop.name} className="shop-image" />
                                     </div>
                                     <div className="shop-content">
