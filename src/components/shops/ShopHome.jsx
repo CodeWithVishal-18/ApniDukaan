@@ -71,9 +71,16 @@ export default function ShopHome() {
     return (
         <div className="shop-home">
             <div className="container py-5">
-                <div className="mb-5">
-                    <h1 className="shop-heading">Nearby Shops</h1>
-                    <p className="shop-subheading">Discover trusted local stores around your area.</p>
+                <div className="mb-3">
+                    <h3 className="shop-heading">Nearby Shops</h3>
+                    <hr className='w-25 mb-0 ms-auto' />
+                    <div className="d-flex justify-content-between">
+                        <p className="shop-subheading">Discover trusted local stores around your area.</p>
+                        <div className='d-flex justify-content-between w-25 shop-filter px-2'>
+                            <span className=''><i className="bi bi-funnel"></i> Filter</span>
+                            <span><i className="bi bi-filter-right"></i> Sort by Rating</span>
+                        </div>
+                    </div>
 
                 </div>
                 <div className="row g-4">
@@ -88,25 +95,19 @@ export default function ShopHome() {
                                     </div>
                                     <div className="shop-content">
                                         <h2 className="shop-title" style={{ color: style.title }}>{shop.name}</h2>
-
                                         <div className="category-bar" style={{ background: style.bg }} >
-
-                                            <span className="category-pill" style={{ color: style.text }} >
-                                                {shop.category}
-                                            </span>
-
+                                            <span className="category-pill text-capitalize" style={{ color: style.text }} ><span className="badge rounded-pill text-bg-secondary">{shop.category}</span></span>
                                         </div>
                                         <p className="shop-description" style={{ color: style.text }}>{shop.description}</p>
 
                                         <div className="d-flex align-items-center flex-wrap gap-3 mb-2">
                                             <span className="shop-location"><i className="bi bi-geo-alt-fill text-danger"></i> {shop.location}</span>
-
-                                            <span className={shop.status === "open" ? "shop-status-open" : "shop-status-closed"} >
-                                                ● {shop.status}
-                                            </span>
-
+                                            <span className={shop.status === "open" ? "shop-status-open" : "shop-status-closed"} ><span className='text-capitalize'>● {shop.status}</span></span>
                                         </div>
-                                        <small className="shop-code">#{shop.shopId}</small>
+                                        <div className="d-flex justify-content-between">
+                                            <small className="shop-code">#{shop.shopId}</small>
+                                            <span className='arrow-animation'><i className="bi bi-arrow-right-circle-fill text-primary fs-4"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

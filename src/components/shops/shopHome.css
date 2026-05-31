@@ -7,12 +7,19 @@
     color: #ff6b35;
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .shop-subheading {
     color: #9f9f9f;
     font-size: 1.1rem;
+    margin-top: 0;
+}
+
+.shop-filter{
+    color: #9f9f9f;
+    font-size: 0.9rem;
+    margin-top: 0;
 }
 
 .shop-card {
@@ -88,7 +95,7 @@
 }
 
 .shop-location {
-    color: #c5c5c5;
+    color: #765c5c;
     font-size: 15px;
 }
 
@@ -105,6 +112,26 @@
 .shop-code {
     color: #8a8a8a;
     font-size: 14px;
+}
+
+.arrow-animation {
+    display: inline-flex;
+    animation: moveArrow 1s ease-in-out infinite;
+}
+
+@keyframes moveArrow {
+
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
 }
 
 @media(max-width:768px) {
