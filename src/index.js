@@ -8,6 +8,7 @@ import App from './components/App.jsx';
 import Home from './components/home/Home.jsx';
 import VendorHome from './components/vendor/VendorHome.jsx';
 import ShopHome from './components/shops/ShopHome.jsx';
+import ShopProducts from './components/shops/products/ShopProducts.jsx';
 
 let projectRoutes = createBrowserRouter([{
   path: "/",
@@ -15,7 +16,8 @@ let projectRoutes = createBrowserRouter([{
   children: [
     { element: <Home />, index: true },
     {path:"vendor",element:<VendorHome/>},
-    {path:"shops",element:<ShopHome/>}
+    {path:"shops",element:<ShopHome/>},
+    {path:"shops/products/:shopId",element:<ShopProducts/>}
   ]
 }])
 

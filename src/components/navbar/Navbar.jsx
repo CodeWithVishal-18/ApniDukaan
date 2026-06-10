@@ -32,9 +32,9 @@ let Navbar = memo(() => {
                             Log in
                         </button>
 
-                        <button className="btn text-white rounded-pill px-4 fw-semibold" style={{ backgroundColor: "#ff6b35" }}>
+                        <Link to={"shops"} className="btn text-white rounded-pill px-4 fw-semibold" style={{ backgroundColor: "#ff6b35" }}>
                             Order Now
-                        </button>
+                        </Link>
                     </div>
 
                 </div>

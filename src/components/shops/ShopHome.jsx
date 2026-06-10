@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./shopHome.css"
+import { Link } from 'react-router-dom'
 
 export default function ShopHome() {
     let [shops, setShops] = useState([])
@@ -86,7 +87,6 @@ export default function ShopHome() {
                 <div className="row g-4">
                     {shops.map((shop, index) => {
                         let style = getCategoryStyle(shop.category);
-                        console.log(shop.category)
                         return (
                             <div className="col-12" key={index}>
                                 <div className="shop-card" style={{ background: style.cardBg, borderColor: style.cardBorder }}>
@@ -106,7 +106,7 @@ export default function ShopHome() {
                                         </div>
                                         <div className="d-flex justify-content-between">
                                             <small className="shop-code">#{shop.shopId}</small>
-                                            <span className='arrow-animation'><i className="bi bi-arrow-right-circle-fill text-primary fs-4"></i></span>
+                                            <Link to={`/shops/products/${shop.shopId}`}><span className='arrow-animation'><i className="bi bi-arrow-right-circle-fill text-primary fs-4"></i></span></Link>
                                         </div>
                                     </div>
                                 </div>
