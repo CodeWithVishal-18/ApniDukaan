@@ -10,9 +10,17 @@ export default function ShopProducts() {
     let [searchText, setSearchText] = useState("")
     let [sortDirection, setSortDirection] = useState("")
 
+    let token = localStorage.getItem("token")
+
     useEffect(() => {
         async function getAllProducts() {
-            let response = await fetch(`http://localhost:8080/api/v1/products/shop/${shopId}`)
+            let response = await fetch(`http://localhost:8080/api/v1/customer/products/shop/${shopId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
             let responseObject = await response.json()
             setAllProducts(responseObject.data || [])
         }
@@ -21,7 +29,13 @@ export default function ShopProducts() {
 
     useEffect(() => {
         async function getFilteredProducts() {
-            let response = await fetch(`http://localhost:8080/api/v1/filter?category=${selectedCategory}&productName=${searchText}&sortDirection=${sortDirection}`)
+            let response = await fetch(`http://localhost:8080/api/v1/filter?category=${selectedCategory}&productName=${searchText}&sortDirection=${sortDirection}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
             let responseObject = await response.json()
             let filteredProducts = responseObject.data.filter(product => product.shop.shopId === shopId)
             setProducts(filteredProducts)

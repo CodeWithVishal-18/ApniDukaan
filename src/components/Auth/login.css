@@ -1,0 +1,124 @@
+.login-wrapper {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f5f1ec;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 1050px;
+    height: 77vh;
+    background: white;
+}
+
+.login-right {
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-heading {
+    font-size: 42px;
+    font-weight: 700;
+    color: #042b1d;
+}
+
+.login-tabs {
+    display: flex;
+    background: #ece7e2;
+    padding: 4px;
+    border-radius: 12px;
+}
+
+.login-tabs a {
+    width: 50%;
+}
+
+.login-tab-btn {
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 11px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.login-active-tab {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.login-input {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+}
+
+.login-input .input-group-text {
+    background: white;
+    border: none;
+    color: #999;
+}
+
+.login-input .form-control {
+    border: none;
+    box-shadow: none !important;
+    padding: 14px 10px;
+}
+
+.login-input .form-control:focus {
+    box-shadow: none;
+}
+
+.login-btn {
+    height: 52px;
+    border: none !important;
+    background: #ff6a2f !important;
+    color: white !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    font-size: 17px !important;
+}
+
+.login-btn:hover {
+    background: #f55d1d !important;
+}
+
+.orange-link {
+    color: #ff6a2f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@media(max-width:992px) {
+    .login-wrapper {
+        padding: 0;
+    }
+
+    .login-card {
+        min-height: 100vh;
+        height: auto;
+        border-radius: 0 !important;
+    }
+
+    .login-right {
+        padding: 30px 20px;
+    }
+
+    .login-heading {
+        font-size: 32px;
+    }
+
+    .login-tab-btn {
+        font-size: 14px;
+    }
+}

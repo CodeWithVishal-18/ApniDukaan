@@ -5,9 +5,15 @@ import { Link } from 'react-router-dom'
 export default function ShopHome() {
     let [shops, setShops] = useState([])
 
+    let token = localStorage.getItem("token")
+
     useEffect(() => {
         async function getAllShopForCustomer() {
-            let response = await fetch("http://localhost:8080/api/v1/shops")
+            let response = await fetch("http://localhost:8080/api/v1/customer/shops", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
             let responseObject = await response.json()
             setShops(responseObject.data)
         }
