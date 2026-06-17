@@ -37,7 +37,7 @@ let Navbar = memo(() => {
                     <div className="d-flex gap-3 mt-3 mt-lg-0 align-items-center">
                         {user ?
                             <>
-                                <span className="fw-semibold">Hello,<span className="text-primary ms-1">{user.name}</span></span>
+                                <span className="fw-semibold">Hello,<span className="text-primary ms-1 text-capitalize">{user.name}</span></span>
                                 <button className="btn btn-outline-danger rounded-pill px-4" onClick={logoutUser}>Logout</button>
                             </>
                             :

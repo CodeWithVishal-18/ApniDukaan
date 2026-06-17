@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import "./login.css"
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import LeftUI from './LeftUI'
 
 export default function Login() {
-    let navigate = useNavigate()
     let [showPassword, setShowPassword] = useState(false)
     let [loginData, setLoginData] = useState({ email: "", password: "" })
 
@@ -39,7 +38,7 @@ export default function Login() {
             localStorage.setItem("user", JSON.stringify(data.user))
 
             if (data.user.role === "ROLE_VENDOR") {
-                window.location.href =
+                window.location.href = 
                     `http://localhost:3001/vendor?token=${data.token}
                     &id=${data.user.id}
                     &name=${data.user.name}

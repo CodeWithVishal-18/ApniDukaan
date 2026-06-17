@@ -106,7 +106,12 @@ export default function Register() {
                                     type="text"
                                     className="form-control"
                                     placeholder="Enter name"
-                                    {...register("name", { required: "Name is required" })}
+                                    {...register("name", {
+                                        required: "Name is required", pattern: {
+                                            value: /^[A-Za-z\s]+$/,
+                                            message: "Only Alphabets are Allowed"
+                                        }
+                                    })}
                                 />
                             </div>
                             <div className="error-space">{errors.name?.message}</div>
