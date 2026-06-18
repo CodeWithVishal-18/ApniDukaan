@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './shopProduct.css'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { useCart } from '../../context/CartContext'
 
 export default function ShopProducts() {
     let { shopId } = useParams()
@@ -9,6 +11,10 @@ export default function ShopProducts() {
     let [selectedCategory, setSelectedCategory] = useState("")
     let [searchText, setSearchText] = useState("")
     let [sortDirection, setSortDirection] = useState("")
+    let [quantities, setQuantities] = useState({})
+    let { cartCount, setCartCount } = useCart();
+
+    let totalItems = Object.values(quantities).reduce((sum, qty) => sum + qty, 0)
 
     let token = localStorage.getItem("token")
 
@@ -44,6 +50,45 @@ export default function ShopProducts() {
     }, [selectedCategory, searchText, sortDirection, shopId])
 
     let categories = [...new Set(allProducts.map(item => item.category))]
+
+    async function addSelectedProductsToCart() {
+
+        let user = JSON.parse(localStorage.getItem("user"))
+        let selectedProducts = Object.entries(quantities).map(([productId, quantity]) => ({ productId, quantity }))
+
+        let response = await fetch(`http://localhost:8080/api/v1/customer/cart/${user.id}`,
+            {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(selectedProducts)
+            }
+        )
+        let responseObject = await response.json()
+        console.log(responseObject)
+        setQuantities({})
+        if (response.ok) {
+            setCartCount(prev => prev + 1);
+            toast.success("Added To Cart");
+        }
+    }
+
+    function increaseQty(productId) {
+        setQuantities(prev => ({ ...prev, [productId]: (prev[productId] || 0) + 1 }))
+    }
+
+    function decreaseQty(productId) {
+        setQuantities(prev => {
+            let currentQty = prev[productId] || 0
+            if (currentQty <= 1) {
+                let updated = { ...prev }
+                delete updated[productId]
+                return updated
+            }
+            return { ...prev, [productId]: currentQty - 1 }
+        })
+    }
 
     return (
         <div className="shop-products-page">
@@ -87,7 +132,18 @@ export default function ShopProducts() {
                             {products.map((product) => (
                                 <div className="col-6 col-lg-4 col-xl-3" key={product.productId} >
                                     <div className="customer-product-card">
-                                        <button className="plus-btn"><i className="bi bi-plus-lg"></i></button>
+                                        {!quantities[product.productId] ? (
+                                            <button className="plus-btn" onClick={() => increaseQty(product.productId)}>
+                                                <i className="bi bi-plus-square" style={{ fontSize: "2rem" }}></i>
+                                            </button>
+                                        ) : (
+                                            <div className="quantity-box">
+                                                <button className="qty-btn btn-line" onClick={() => decreaseQty(product.productId)}> <i className="bi bi-dash-lg"></i></button>
+                                                <span className="qty-value"> {quantities[product.productId]}</span>
+
+                                                <button className="qty-btn btn-line1" onClick={() => increaseQty(product.productId)} > <i className="bi bi-plus-lg"></i> </button>
+                                            </div>
+                                        )}
 
                                         <div className="product-image-wrapper">
                                             <img src={`http://localhost:8080/productimages/${product.imageName}`} alt="product" className="product-image" />
@@ -120,6 +176,13 @@ export default function ShopProducts() {
                     </div>
                 </div>
             </div>
+            {totalItems > 0 && (
+                <div className="cart-popup">
+                    <button className="cart-popup-btn" onClick={addSelectedProductsToCart}>
+                        Add {totalItems} Items To Cart
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

@@ -12,35 +12,40 @@ import ShopProducts from './components/shops/products/ShopProducts.jsx';
 import Login from './components/Auth/Login.jsx';
 import Register from './components/Auth/Register.jsx';
 import { ToastContainer, Zoom } from 'react-toastify';
+import Cart from './components/shops/cart/Cart.jsx';
+import { CartProvider } from './components/context/CartContext.js';
 
 let projectRoutes = createBrowserRouter([{
   path: "/",
   element: <App />,
   children: [
     { element: <Home />, index: true },
-    {path:"vendor",element:<VendorHome/>},
-    {path:"shops",element:<ShopHome/>},
-    {path:"shops/products/:shopId",element:<ShopProducts/>},
-    {path:"login",element:<Login/>},
-    {path:"register",element:<Register/>}
+    { path: "vendor", element: <VendorHome /> },
+    { path: "shops", element: <ShopHome /> },
+    { path: "shops/products/:shopId", element: <ShopProducts /> },
+    { path: "login", element: <Login /> },
+    { path: "register", element: <Register /> },
+    { path: "cart", element: <Cart /> }
   ]
 }])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-<>
-<RouterProvider router={projectRoutes}/>
-<ToastContainer
-      position="top-right"
-      autoClose={2000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick={false}
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="dark"
-      transition={Zoom}
-    />
-</>);
+  <>
+    <CartProvider>
+      <RouterProvider router={projectRoutes} />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Zoom}
+      />
+    </CartProvider>
+  </>);

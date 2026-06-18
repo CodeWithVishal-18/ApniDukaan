@@ -1,0 +1,26 @@
+.cart-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px;
+    border-radius: 18px;
+    background: white;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.cart-img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.summary-card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    position: sticky;
+    top: 90px;
+}
