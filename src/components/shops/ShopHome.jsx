@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 export default function ShopHome() {
     let [shops, setShops] = useState([])
+    let [allShops, setAllShops] = useState([])
+    let [selectedCategory, setSelectedCategory] = useState("")
+    let [searchText, setSearchText] = useState("")
 
     let token = localStorage.getItem("token")
 
@@ -15,13 +18,28 @@ export default function ShopHome() {
                 }
             })
             let responseObject = await response.json()
+            setAllShops(responseObject.data)
             setShops(responseObject.data)
         }
         getAllShopForCustomer()
-    }, [])
+    }, [token])
 
-    let getCategoryStyle = (category) => {
-        let category1 = category?.trim().toLowerCase()
+    useEffect(() => {
+        async function getFilteredShops() {
+            let response = await fetch(`http://localhost:8080/api/v1/filter/shops?category=${selectedCategory}&shopName=${searchText}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            let responseObject = await response.json()
+            setShops(responseObject.data)
+        }
+        getFilteredShops()
+    }, [selectedCategory, searchText,token])
+
+    let categories = [...new Set(allShops.map(item => item.category))]
+
+    let getCategoryStyle = (category) => {let category1 = category?.trim().toLowerCase()
 
         switch (category1) {
 
@@ -79,16 +97,20 @@ export default function ShopHome() {
         <div className="shop-home">
             <div className="container py-5">
                 <div className="mb-3">
-                    <h3 className="shop-heading">Nearby Shops</h3>
-                    <hr className='w-25 mb-0 ms-auto' />
-                    <div className="d-flex justify-content-between">
-                        <p className="shop-subheading">Discover trusted local stores around your area.</p>
-                        <div className='d-flex justify-content-between w-25 shop-filter px-2'>
-                            <span className=''><i className="bi bi-funnel"></i> Filter</span>
-                            <span><i className="bi bi-filter-right"></i> Sort by Rating</span>
+                    <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                        <h3 className="shop-heading mb-2 mb-sm-0">Nearby Shops</h3>
+                        <div className="d-flex flex-column flex-sm-row">
+                            <select className="form-select form-select-sm mb-2 mb-sm-0 me-sm-2" aria-label="Small select example" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} style={{backgroundColor:"#f9f6f0"}}>
+                                <option value="" selected>Filter Category</option>
+                                {categories.map((category, index) => (
+                                    <option key={index} value={category}>{category}</option>
+                                ))}
+                            </select>
+                            <input className="form-control form-control-sm" type="search" placeholder="Search" aria-label="Search" value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{backgroundColor:"#f9f6f0"}}/>
                         </div>
                     </div>
 
+                    <p className="shop-subheading">Discover trusted local stores around your area.</p>
                 </div>
                 <div className="row g-4">
                     {shops.map((shop, index) => {
@@ -100,11 +122,11 @@ export default function ShopHome() {
                                         <img src={`http://localhost:8080/images/${shop.imageName}`} alt={shop.name} className="shop-image" />
                                     </div>
                                     <div className="shop-content">
-                                        <h2 className="shop-title" style={{ color: style.title }}>{shop.name}</h2>
+                                        <h2 className="shop-title text-capitalize" style={{ color: style.title }}>{shop.name}</h2>
                                         <div className="category-bar" style={{ background: style.bg }} >
                                             <span className="category-pill text-capitalize" style={{ color: style.text }} ><span className="badge rounded-pill text-bg-secondary">{shop.category}</span></span>
                                         </div>
-                                        <p className="shop-description" style={{ color: style.text }}>{shop.description}</p>
+                                        <p className="shop-description text-capitalize" style={{ color: style.text }}>{shop.description}</p>
 
                                         <div className="d-flex align-items-center flex-wrap gap-3 mb-2">
                                             <span className="shop-location"><i className="bi bi-geo-alt-fill text-danger"></i> {shop.location}</span>

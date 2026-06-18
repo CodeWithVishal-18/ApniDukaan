@@ -29,9 +29,7 @@ let Navbar = memo(() => {
 
                 <div className="collapse navbar-collapse" id="navMenu">
                     <ul className="navbar-nav mx-auto gap-lg-4 fw-semibold">
-                        <li className="nav-item"><a href="#works" className="nav-link">How It Works</a></li>
                         <li className="nav-item"><Link to={"shops"} className="nav-link">Shops</Link></li>
-                        <li className="nav-item"><a href="#about" className="nav-link"> About</a></li>
                     </ul>
 
                     <div className="d-flex gap-3 mt-3 mt-lg-0 align-items-center">

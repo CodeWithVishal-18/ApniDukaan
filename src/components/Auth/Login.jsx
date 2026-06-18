@@ -38,7 +38,7 @@ export default function Login() {
             localStorage.setItem("user", JSON.stringify(data.user))
 
             if (data.user.role === "ROLE_VENDOR") {
-                window.location.href = 
+                window.location.href =
                     `http://localhost:3001/vendor?token=${data.token}
                     &id=${data.user.id}
                     &name=${data.user.name}
@@ -61,7 +61,7 @@ export default function Login() {
                     <div className="d-lg-none text-center mb-4">
                         <div className="logo-circle mx-auto mb-3"><i className="bi bi-shop"></i></div>
 
-                        <h2 className="fw-bold"> Apni <span className="text-orange">     Dukaan </span> </h2>
+                        <h2 className="fw-bold"> Apni <span className="text-orange">Dukaan </span> </h2>
                     </div>
 
                     <div className="login-tabs mb-4">
