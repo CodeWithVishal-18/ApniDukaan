@@ -89,8 +89,7 @@ export default function Cart() {
                         <hr />
                         <div className="d-flex justify-content-between fw-bold fs-5">
                             <span>Grand Total</span>
-                            <span>₹{cartData.grandTotal.toFixed(2)}
-                            </span>
+                            <span>₹{cartData.grandTotal.toFixed(2)}</span>
                         </div>
 
                         <button className="btn btn-success w-100 mt-4 py-3 fw-bold">Proceed To Checkout</button>
