@@ -9,7 +9,7 @@ export default function Register() {
     let navigate = useNavigate()
     let [role, setRole] = useState("ROLE_CUSTOMER")
     let [showPassword, setShowPassword] = useState(false)
-    let { register, handleSubmit, formState: { errors }, setError } = useForm({
+    let { register, handleSubmit, watch, formState: { errors }, setError } = useForm({
         defaultValues: {
             name: "",
             email: "",
@@ -55,6 +55,7 @@ export default function Register() {
             toast.error("Something went wrong")
         }
     }
+    let password = watch("password");
 
     return (
         <div className="container-fluid register-wrapper">
@@ -78,7 +79,7 @@ export default function Register() {
                     <p className="text-muted mb-3">
                         Already have an account?<Link to="/login" className="orange-link">{" "}Login here →</Link>
                     </p>
-                    <div className="row g-3 mb-2">
+                    <div className="row g-3 mb-1">
                         <div className="col-6">
                             <div className={role === "ROLE_VENDOR" ? "register-role-card register-active-role" : "register-role-card"}
                                 onClick={() => setRole("ROLE_VENDOR")}>
@@ -164,6 +165,31 @@ export default function Register() {
                             <div className="error-space">{errors.password?.message}</div>
                         </div>
 
+                        <div className="mb-2">
+
+                            <label className="fw-semibold mb-1">
+                                Confirm Password
+                            </label>
+
+                            <div className="input-group register-input">
+
+                                <span className="input-group-text">
+                                    <i className="bi bi-shield-lock"></i>
+                                </span>
+
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    className="form-control"
+                                    placeholder="Confirm password"
+                                    {...register("confirmPassword", { required: "Confirm Password is required", validate: (value) => value === password || "Passwords do not match" })}
+                                />
+
+                                <span className="input-group-text cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+                                    <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                                </span>
+                            </div>
+                            <div className="error-space">{errors.confirmPassword?.message}</div>
+                        </div>
                         <button className="btn register-btn w-100 mt-2">Create My Dukaan →</button>
                     </form>
                 </div>
