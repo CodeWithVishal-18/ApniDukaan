@@ -65,9 +65,7 @@ export default function Register() {
 
                 <div className="col-lg-7 bg-light register-right">
                     <div className="register-tabs mb-2">
-                        <Link to="/login" className="w-50">
-                            <button className="register-tab-btn">Login</button>
-                        </Link>
+                        <Link to="/login" className="w-50"><button className="register-tab-btn">Login</button></Link>
 
                         <Link to="/register" className="w-50">
                             <button className="register-tab-btn register-active-tab">Create Account</button>
@@ -172,11 +170,7 @@ export default function Register() {
                             </label>
 
                             <div className="input-group register-input">
-
-                                <span className="input-group-text">
-                                    <i className="bi bi-shield-lock"></i>
-                                </span>
-
+                                <span className="input-group-text"><i className="bi bi-shield-lock"></i></span>
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     className="form-control"
