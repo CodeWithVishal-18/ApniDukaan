@@ -72,7 +72,6 @@ export default function Register() {
                         </Link>
                     </div>
 
-
                     <h2 className="register-heading">Join ApniDukaan ✨</h2>
                     <p className="text-muted mb-3">
                         Already have an account?<Link to="/login" className="orange-link">{" "}Login here →</Link>
